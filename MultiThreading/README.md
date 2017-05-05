@@ -23,11 +23,11 @@ DispatchQueue.main.async {
     * unspecified
   * __직렬큐를 직접 만들기__
     * 이 큐는 꽤 높은 우선순위를 가지게 된다. 메인큐 만큼은 아니겠지만. 그러면 왜 나만의 직렬큐가 필요할까? 큰 테이블이 있다고 해보자 다운로드해 올 수천장의 이미지가 들어갈 테이블 같은 것. 이런 작업을 인니티에이트같은 병렬큐중에 하나에서 처리할 수도 있겠지만 그러면 여러 쓰레드로 갈라질거야. 병렬적으로 가능한 많이 다운로드 하기 위해서 말이야. 네트워크 연결을 모두 열어두는거야. 직렬로 처리하면 하나하나씩 처리할 거야. 네트워크 접속 통로를 하나로 좁히는 방식인거지. 보통 새 직렬큐가 필요하지 않고 주로 여기 병렬 큐 4개를 사용하게 될거야.
-    ```swift
-    let serialQueue = DispatchQueue(label: "queuename")
-    serialQueue.sync {
-    }
-    ```
+```swift
+let serialQueue = DispatchQueue(label: "queuename")
+serialQueue.sync {
+}
+```
   * 문법참고 [1](http://stackoverflow.com/questions/37805885/how-to-create-dispatch-queue-in-swift-3), [2](https://swifter.kr/2016/10/22/swift-3-0%EA%B8%B0%EB%B0%98-gcd-%EA%B8%B0%EC%B4%88/)
 
 ## Related Contents
