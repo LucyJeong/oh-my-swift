@@ -14,18 +14,21 @@ DispatchQueue.main.async {
 }
 ```
 * 메인큐가 아닌 것들은 어떻게 가져올까? 두가지 방법이 있음
-  1. 시스템이 제공하는 4가지의 병렬큐들을 가져오기 (i.e not the main queue)
+  * __시스템이 제공하는 4가지의 병렬큐들을 가져오기 (i.e not the main queue)__
    * userInteractive: 사용자와 상호작용을 할 수 있는 큐. 사용자가 막 무언가를 요청할 때 처리하는 시간이 좀 걸려서 메인 큐에 두고 싶지 않은거야
    * userInitiated: 위보다는 우선 순위가 낮다. 사용자가 어떤 처리를 요청했지만 상호작용이 필요한 처리 도중은 아니어서 시간이 조금 걸릴지도 모르지만 곧바로 다시 돌아와야 할 떄야. 뒤에서 오랜동안 작동하는거야.  데이터를 가져오거나 데이터 베이스를 비운다던지 하는 경우이지. 보통 사용자가 요청 하지는 않았지만 프로그램을 위해 처리되어야 할 것들을 말하지
     * default
     * utility
     * background: 더 낮은 우선순위야. 오늘해도 되고 내일 해도 되는 일들이지 백그라운드에서 처리해야할 것들을 말하지
     * unspecified
-  2. 직렬큐를 직접 만들기
+  * __직렬큐를 직접 만들기__
     * 이 큐는 꽤 높은 우선순위를 가지게 된다. 메인큐 만큼은 아니겠지만. 그러면 왜 나만의 직렬큐가 필요할까? 큰 테이블이 있다고 해보자 다운로드해 올 수천장의 이미지가 들어갈 테이블 같은 것. 이런 작업을 인니티에이트같은 병렬큐중에 하나에서 처리할 수도 있겠지만 그러면 여러 쓰레드로 갈라질거야. 병렬적으로 가능한 많이 다운로드 하기 위해서 말이야. 네트워크 연결을 모두 열어두는거야. 직렬로 처리하면 하나하나씩 처리할 거야. 네트워크 접속 통로를 하나로 좁히는 방식인거지. 보통 새 직렬큐가 필요하지 않고 주로 여기 병렬 큐 4개를 사용하게 될거야.
     ```swift
     let serialQueue = DispatchQueue(label: "queuename")
     serialQueue.sync {
     }
     ```
-  * [문법참고](http://stackoverflow.com/questions/37805885/how-to-create-dispatch-queue-in-swift-3 , https://swifter.kr/2016/10/22/swift-3-0%EA%B8%B0%EB%B0%98-gcd-%EA%B8%B0%EC%B4%88/)
+  * 문법참고 [1](http://stackoverflow.com/questions/37805885/how-to-create-dispatch-queue-in-swift-3), [2](https://swifter.kr/2016/10/22/swift-3-0%EA%B8%B0%EB%B0%98-gcd-%EA%B8%B0%EC%B4%88/)
+
+## Related Contents
+* [GCD](/GCD)
