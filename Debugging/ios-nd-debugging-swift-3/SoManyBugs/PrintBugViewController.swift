@@ -31,11 +31,17 @@ class PrintBugViewController: UIViewController {
     // MARK: Bug Functions
     
     func addBugToView() {
+        print("bug count is \(bugs.count)")
+        debugPrint(self)
         if bugs.count < maxBugs {
             let newBug = bugFactory.createBug()
+            print("newBug is created")
             bugs.append(newBug)
+            //Debugging
+            view.addSubview(newBug)
             moveBugsAnimation()
         }
+        debugPrint(self)
     }
 
     func emptyBugsFromView() {
@@ -72,6 +78,20 @@ class PrintBugViewController: UIViewController {
     @IBAction func popToMasterView() {
         let _ = navigationController?.popToRootViewController(animated: true)
     }
+    
+    override var description: String {
+        return "PrintBugViewController contatins \(bugs.count) bugs\n"
+    }
+    
+    override var debugDescription: String {
+        var index = 0
+        var debugString = "PrintBugViewController contatins \(bugs.count) bugs...\n"
+        for bug in bugs {
+            debugString = debugString + "bug\(index): \(bug.frame)\n"
+            index += 1
+        }
+        return debugString
+    }
 }
 
 // MARK: - UIResponder
@@ -81,6 +101,7 @@ extension PrintBugViewController {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake { disperseBugsAnimation() }
     }
-    func handleSingleTap(_ recognizer: UITapGestureRecognizer) { addBugToView() }
+    func handleSingleTap(_ recognizer: UITapGestureRecognizer) {
+        addBugToView()
+    }
 }
-

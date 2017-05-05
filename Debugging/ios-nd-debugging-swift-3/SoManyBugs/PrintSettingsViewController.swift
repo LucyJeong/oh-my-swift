@@ -32,7 +32,12 @@ class PrintSettingsViewController: UIViewController {
     @IBAction func dismissSettingsTouched(_ sender: AnyObject) { self.dismiss(animated: true, completion: nil) }
     
     @IBAction func bugTypeSelected(_ sender: UIButton) {        
-        bugFactory.currentBugType = BugFactory.BugType(rawValue: Int(sender.currentTitle!)!)!
-        self.dismiss(animated: true, completion: nil)
+    
+        if let bugType = BugFactory.BugType(rawValue: Int(sender.currentTitle!)!) {
+            bugFactory.currentBugType = bugType
+        }
+        //print(sender.currentTitle)
+        //print(sender.tag)
+    self.dismiss(animated: true, completion: nil)
     }
 }
