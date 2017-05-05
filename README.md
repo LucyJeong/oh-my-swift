@@ -11,6 +11,7 @@ This is what I have put about the process of studying Swift.
 
 ## Udacity [🔗](https://www.udacity.com/)
 - [Grand Central Dispatch(GCD)](/GCD) [🔗](https://www.udacity.com/course/grand-central-dispatch-gcd--ud576)
+- [Xcode Debugging](/Debugging)[:link:](https://www.udacity.com/course/xcode-debugging--ud774)
 
 ## Standford
 - [넘어야할 산 멀티쓰레딩](/MultiThreading) [📹](https://youtu.be/4JYX3SVXH2s)
