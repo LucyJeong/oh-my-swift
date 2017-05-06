@@ -49,7 +49,6 @@ debugPrint()
   * 로그 메시지를 메모리 및 디스크로 효율적으로 캡처합니다. 로깅 동작 및 지속성을 관리합니다.
   * Unified logging is available in iOS 10.0 and later, macOS 10.12 and later, tvOS 10.0 and later, and watchOS 3.0 and later
   * log messages were written to specific locations on disk, such as /etc/system.log.
-    * by [Apple Developer: Logging]
 
     Level | Constant | Behavior
     ------| ------------------- | --------
@@ -58,3 +57,27 @@ debugPrint()
     Debug | OS_LOG_TYPE_DEBUG | 디버그 수준 메시지는 구성 변경을 통해 디버그 로깅을 사용하도록 설정 한 경우에만 메모리에 캡처됩니다. 구성의 지속성 설정에 따라 제거됩니다. 이 레벨에 기록 된 메시지에는 개발 중에 또는 특정 문제점을 해결하는 동안 유용한 정보가 들어 있습니다. 디버그 로깅은 출하 소프트웨어가 아닌 개발 환경에서 사용하기위한 것입니다.
     Error | OS_LOG_TYPE_ERROR | Error-level 메시지는 항상 데이터 저장소에 저장됩니다. 저장소 할당량이 초과 될 때까지이 위치에 남아 있습니다. 가장 오래된 메시지가 제거됩니다. Error-level 메시지는 process-level Error를 보고하기위한 것입니다.
     Fault | OS_LOG_TYPE_FAULT | Fault-level 메시지는 항상 데이터 저장소에 저장됩니다.
+
+    * by [Apple Developer: Logging]
+  * [XCGLogger](https://github.com/DaveWoodCom/XCGLogger)
+  * dump
+  ```swift
+  let iosTeam = ["Jarrod", "Gabrielle", "Michael", "Fernando", "Kate", "Hope"]
+  dump(iosTeam)
+
+  /* prints...
+  ▿ 6 elements
+    - "Jarrod"
+    - "Gabrielle"
+    - "Michael"
+    - "Fernando"
+    - "Kate"
+    - "Hope"
+  */
+```
+  * BreakPoint
+    * Step In : 한줄 한줄 코드를 밟아보는 것 (단축키: F6)
+    * Step Into
+    * Step Out  
+    * Step Over  
+  * lldb 
